@@ -3,7 +3,6 @@ package com.glosebooks.view
 import android.content.Context
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
 import com.brianegan.bansa.Store
 import com.glosebooks.store.ApplicationState
 import com.glosebooks.view.adapter.RecyclerViewAdapter
@@ -18,9 +17,9 @@ import java.util.*
  */
 class RootView(c: Context, val store: Store<ApplicationState>) : RenderableView(c) {
     val stateChangeSubscription = store.subscribe { Anvil.render() }
-    val mapCounterToCounterViewModel = buildMapCounterToCounterViewModel(store)
+    val mapModelToViewModel = buildMapModelToViewModel(store)
     val adapter = RecyclerViewAdapter(
-            mapCounterToCounterViewModel,
+            mapModelToViewModel,
             ::bookView,
             { models, pos ->
                 UUID.nameUUIDFromBytes(models[pos].id.toByteArray()).getMostSignificantBits();
@@ -32,6 +31,7 @@ class RootView(c: Context, val store: Store<ApplicationState>) : RenderableView(
         stateChangeSubscription.unsubscribe()
     }
 
+    /** function that create view using anvil*/
     override fun view() {
         DSL.frameLayout {
             DSL.padding(DSL.dip(16), DSL.dip(16), DSL.dip(16), 0)

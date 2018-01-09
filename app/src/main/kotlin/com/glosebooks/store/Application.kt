@@ -11,8 +11,9 @@ class Application : android.app.Application() {
     override fun onCreate() {
         super.onCreate()
 
-        store.dispatch(INIT()) // Initialize the store
+        store.dispatch(INIT()) // Initialize the store to the INIT state
     }
 }
 
+/** Application store that allow you to dispatch events*/
 val store = BaseStore(ApplicationState(), applicationReducer)

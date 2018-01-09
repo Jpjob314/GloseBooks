@@ -17,8 +17,11 @@ open class RootActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(RootView(this, store))
 
+        //get service and set state to loading
         val api = Service()
         store.dispatch(LOADING("GetFreeBooks"))
+
+        //then load books from api
         Thread(Runnable {
             try {
                 val books = api.getBooks()?.execute()

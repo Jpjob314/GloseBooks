@@ -14,6 +14,8 @@ import trikita.anvil.cardview.v7.CardViewv7DSL
 
 /**
  * Created by Julien on 09/01/2018.
+ * bookView that contains definition of the item view using anvil
+ * @param model the BookViewModel
  */
 fun bookView(model: BookViewModel) {
     DSL.linearLayout {
@@ -97,7 +99,9 @@ fun bookView(model: BookViewModel) {
     }
 }
 
-fun buildMapCounterToCounterViewModel(store: Store<ApplicationState>): (Book) -> BookViewModel {
+/**function to manage click on book using store dispatch
+ * @param store : the store*/
+fun buildMapModelToViewModel(store: Store<ApplicationState>): (Book) -> BookViewModel {
     return { book ->
         BookViewModel(
                 book,

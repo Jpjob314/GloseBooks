@@ -5,6 +5,7 @@ import trikita.anvil.RenderableRecyclerViewAdapter
 
 /**
  * Created by Julien on 09/01/2018.
+ * RecyclerViewAdapter using anvil that manage init, view, udates...
  */
 class RecyclerViewAdapter<M, VM>(
         val mapModelToViewModel: (M) -> VM,
@@ -18,10 +19,17 @@ class RecyclerViewAdapter<M, VM>(
         setHasStableIds(hasStableIds)
     }
 
+    /** getItemCount
+     * @return the number of items
+     */
     override fun getItemCount(): Int {
         return models.size
     }
 
+    /** getItemId
+     * @param position : the position of the item
+     * @return a generated long id from json original id
+     */
     override fun getItemId(position: Int): Long {
         return getId(models, position)
     }

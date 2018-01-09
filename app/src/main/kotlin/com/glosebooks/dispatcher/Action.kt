@@ -6,6 +6,7 @@ import com.glosebooks.store.entities.Book
 
 /**
  * Created by Julien on 09/01/2018.
+ * List of actions and states of the app. Default : INIT
  */
 data class INIT(val state: ApplicationState = ApplicationState()) : Action
 data class LOADING(val info: String) : Action

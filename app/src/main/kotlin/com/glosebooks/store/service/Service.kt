@@ -21,6 +21,7 @@ class Service {
         gloseService = retrofit.create(IService::class.java)
     }
 
+    /**function to get book list**/
     fun getBooks(): Call<BookList>? {
         return gloseService?.getBookLists()
     }
